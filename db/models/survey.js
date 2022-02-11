@@ -1,4 +1,4 @@
-// File: ./models/products.js
+// File: ./models/survey.js
 
 //Require Mongoose
 var mongoose = require('mongoose');
@@ -7,8 +7,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SurveySchema = new Schema({
-  name: String,
-  img:String
+  image_id   : Number,
+  image_tag  : String,
+  image_link : String
 });
 
 //Export function to create "SurveySchema" model class

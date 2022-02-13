@@ -28,9 +28,20 @@ http://www.tooplate.com/view/2100-artist
 <!-- Main css -->
 <link id="mystylesheet" rel="stylesheet" stype="text/css" href="./css/tooplate-style.css">
 
+<script>
+     const userAction =async () => {
+          fetch('http://localhost:3000/survey')
+          .then (response => response.json())
+          .then (json => console.log(json))
+     }
+     userAction();
+     document.getElementById("demo").innerHTML = response.json;
+</script>
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
 
 <!-- PRE LOADER -->
 <div class="preloader">

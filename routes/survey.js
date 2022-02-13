@@ -1,7 +1,35 @@
 var express = require('express');
+const app = express();
 var router = express.Router();
 const mongoose = require("mongoose");
 var Survey = require ("../db/models/survey");
+const ejs = require ('ejs');
+
+app.set('view engine','ejs');
+
+// mongoose.connect('');
+
+app.get ('/' , (req,res) => {
+  Survey.find({}, function (err, surveys) {
+    res.render('index', {
+      surveyList: surveys
+      
+    })
+
+  })
+})
+
+const surveySchema = {
+  image_id: Number,
+  image_tag:String,
+  image_link:String
+}
+
+// const Survey1 = mongoose.model ('Survey', surveySchema)
+
+app.listen(4000,function() {
+  console.log('server is running')
+})
 
 /* GET survey listing. */
 router.get('/', (req, res, next) => {
@@ -32,7 +60,10 @@ router.post ("/", (req,res,next) => {
       res.json(newInstance);
     }
   });
+
 });
+
+
 
 //Delete new survey
 router.delete("/", (req, res, next) => {

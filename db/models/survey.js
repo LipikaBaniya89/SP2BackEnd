@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var SurveySchema = new Schema({
         image_id   : Number,
         image_tag  : String,
-        image_link : String,  
+        image_link : String
 });
 
 //Export function to create "SurveySchema" model class

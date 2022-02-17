@@ -10,6 +10,7 @@ require('./db/db.js')
 //Router
 var indexRouter = require('./routes/index');
 var surveysRouter = require ('./routes/survey');
+var dogRouter = require ('./routes/dog');
 var customersRouter = require ('./routes/customer');
 var customersPointRouter = require ('./routes/customer_point');
 var usersRouter = require('./routes/users');
@@ -32,6 +33,7 @@ app.use('/users', usersRouter);
 app.use('/customers',customersRouter);
 app.use('/customers_point',customersPointRouter)
 app.use('/surveys', surveysRouter);
+app.use('/dog',dogRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

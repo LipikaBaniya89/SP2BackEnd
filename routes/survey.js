@@ -1,35 +1,7 @@
 var express = require('express');
-const app = express();
 var router = express.Router();
 const mongoose = require("mongoose");
 var Survey = require ("../db/models/survey");
-const ejs = require ('ejs');
-
-app.set('view engine','ejs');
-
-// mongoose.connect('');
-
-app.get ('/' , (req,res) => {
-  Survey.find({}, function (err, surveys) {
-    res.render('index', {
-      surveyList: surveys
-      
-    })
-
-  })
-})
-
-const surveySchema = {
-  image_id: Number,
-  image_tag:String,
-  image_link:String
-}
-
-// const Survey1 = mongoose.model ('Survey', surveySchema)
-
-app.listen(4000,function() {
-  console.log('server is running')
-})
 
 /* GET survey listing. */
 router.get('/', (req, res, next) => {
@@ -44,13 +16,13 @@ router.get('/', (req, res, next) => {
 });
 
 // Create new survey
-router.post ("/", (req,res,next) => {
+router.post ("/",  (req,res,next) => {
   console.debug(req.body);
   const data = req.body;
   const survey1 = new Survey({
-    image_id   : data.image_id,
-    image_tag  : data.image_tag,
-    image_link : data.image_link
+        image_id   : data.image_id,
+        image_tag  : data.image_tag,
+        image_link : data.image_link
   });
   survey1.save((err, newInstance) => {
     if (err) {
@@ -86,7 +58,8 @@ router.put("/", async (req, res, next) => {
   var survey1 = await Survey.findOne({ code: data.code });
   survey1.image_id   = data.image_id;
   survey1.image_tag  = data.image_tag;
-  survey1.image_link = data.image_link;
+  survey1.image_link = data.image_link
+  
   await survey1.save();
   res.status(200).json(survey1);
 });

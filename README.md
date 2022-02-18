@@ -5,5 +5,5 @@
 > yarn dev
 
 ## Starting FrontEnd Client 
-. cd client
+> cd client
 > npm start
